@@ -1,0 +1,197 @@
+\pdfoutput=1
+\documentclass[10pt,logo,copyright]{nvidiatechreport}
+\linespread{1.15}
+
+\input{packages}
+% Optional math commands from https://github.com/goodfeli/dlbook_notation.
+\input{common.tex}
+\newcommand{\FIGREF}[1]{Fig.~\ref{#1}} % Fig. or Figure
+\definecolor{darkred}{rgb}{0.7, 0.0, 0.0}
+\newcommand{\checkthis}[1]{\textcolor{darkred}{#1}}
+
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\TODO}[1]{\textcolor{red}{[TODO] #1}}
+
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}} % Tick mark
+\newcommand{\xmark}{\ding{55}} % Cross mark
+\newcommand{\pmark}{\textcolor{gray}{\ding{108}}} % Partial or indirect support
+\usepackage{wrapfig}
+\renewcommand{\today}{}
+
+\usepackage[nameinlink]{cleveref}
+\crefname{equation}{Eq.}{Eqs.}
+\crefname{figure}{Fig.}{Figs.}
+\crefname{section}{Sec.}{Sec.}
+\crefname{appendix}{App.}{App.}
+\crefname{table}{Tab.}{Tabs.}
+\crefname{algorithm}{Algo}{Algo}
+\crefname{thm}{Thm}{Thm}
+\Crefname{thm}{Thm}{Thm}
+\crefname{prop}{Prop}{Prop}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{makecell}
+\usepackage{xurl}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{trees} % Explicitly load the trees library
+\usepackage[edges]{forest}
+\usepackage[breakable]{tcolorbox}
+\definecolor{nvidiaGreen}{HTML}{9dca63}
+\newcommand{\crefnames}[3]{%
+  \@for\next:=#1\do{%
+    \expandafter\crefname\expandafter{\next}{#2}{#3}%
+  }%
+}
+\usepackage{listings}
+\lstdefinestyle{pythonstyle}{language=Python, basicstyle=\ttfamily\small, keywordstyle=\color{blue}, commentstyle=\color{gray}, stringstyle=\color{red}, showstringspaces=false, breaklines=true}
+\tcbuselibrary{listings,skins}
+\definecolor{polarPanelTitle}{HTML}{3f3f3f}
+\definecolor{polarPanelBody}{HTML}{f1f2ff}
+\definecolor{polarPanelFrame}{HTML}{4a4a4a}
+\newtcblisting{polarlisting}[1]{
+    listing only,
+    breakable,
+    enhanced,
+    title={#1},
+    colback=polarPanelBody,
+    colframe=polarPanelFrame,
+    colbacktitle=polarPanelTitle,
+    coltitle=white,
+    fonttitle=\bfseries,
+    boxrule=0.7pt,
+    arc=3pt,
+    left=7pt,
+    right=7pt,
+    top=6pt,
+    bottom=6pt,
+    listing options={
+        language=Python,
+        basicstyle=\ttfamily\footnotesize,
+        keywordstyle=\color{black},
+        commentstyle=\color{black!55},
+        stringstyle=\color{black!70},
+        showstringspaces=false,
+        breaklines=true,
+        columns=fullflexible,
+        keepspaces=true
+    }
+}
+\newcommand{\sz}[1]{\textcolor[rgb]{0.12,0.55,1.0}{Shaokun-#1}}
+\newcommand\ximing[1]{{\color{purple}[#1]$_{Ximing}$}}
+\definecolor{midnightgreen}{rgb}{0.0, 0.29, 0.33}
+\definecolor{deepgreen}{HTML}{0aa344}
+\newcommand{\green}[1]{\textcolor{deepgreen}{#1}}
+\newcommand{\nvgreen}[1]{\textcolor{nvidiagreen}{#1}}
+\definecolor{deeppurple}{HTML}{7030a0}
+\definecolor{deepblue}{HTML}{171d91}
+\definecolor{brown}{HTML}{843c0c}
+\definecolor{shadered}{HTML}{ffe5e5}
+\definecolor{shadegreen}{HTML}{e5f7ed}
+\definecolor{msftBlack}{RGB}{0,0,0}
+\definecolor{lightred}{RGB}{255,163,163}
+\definecolor{deepred}{RGB}{146,0,0}
+\captionsetup[subfigure]{justification=centering}
+\newcommand{\finding}[2]{
+    % args:
+    %   1: finding number
+    %   2: finding text
+    \vspace{-0.1cm}
+    \begin{tcolorbox}[
+        colback=nvidiaGreen,     % Soft ivory background
+        colframe=gray!5!white,     % Deep navy frame color
+        arc=10pt,                    % Less rounded corners for a modern look
+        boxsep=7pt,                 % Inner margin between text and frame
+        left=10pt,                  % Left margin within the box
+        right=10pt,                 % Right margin within the box
+        top=2pt,                    % Top margin within the box
+        bottom=2pt,                 % Bottom margin within the box
+        boxrule=1.0pt,              % Frame thickness
+        % enhanced jigsaw removed
+    ]
+        \paragraph{\textbf{\textit{Finding #1:}}} #2
+    \end{tcolorbox}
+}
+\newtcolorbox{boxL}{
+    fontupper = \color{black},
+    rounded corners,
+    arc = 6pt,
+    colframe = black!50,
+    boxrule = 0pt,
+    bottomrule = 4.5pt ,
+    breakable,
+}
+\newcommand{\polar}{\textsc{Polar}\xspace}
+\newcommand{\prorlagent}{\textsc{ProRL Agent}\xspace}
+\title{Polar: Agentic RL on Any Harness at Scale}
+\author{Binfeng Xu, Hao Zhang, Shaokun Zhang, Songyang Han, Mingjie Liu, Jian Hu, Shizhe Diao, Zhenghui Jin, Yunheng Zou, Michael Demoret, Jan Kautz, Yi Dong
+}
+
+\begin{abstract}
+% Reinforcement learning for language models is moving from single-step tasks to long-running agentic environments. Existing agent RL framework often treat the agent itself as the RL interface, making training hard to implement.
+% We present \polar, a black-box agent RL infrastructure that can train any agent by using its LLM API traffic as the RL interface.
+% \polar runs agents unchanged, proxies their model calls, records token-level interaction data, and reconstructs rollout trajectories for RL.
+% \polar further decouples agent execution, evaluation, and trainer consumption through asynchronous service boundaries to support slow and high-variance rollouts.
+% We validate \polar by training Claude Code, Codex CLI, and OpenHands on software-engineering tasks, achieving strong gains on SWE-Bench Verified.
+
+Reinforcement learning for language agents increasingly depends on custom harnesses that manage long-running context, multi-turn tool use and multi-agent orchestration. 
+However, porting these harnesses into RL environment interfaces remains difficult and often loses important training signals.
+We bridge this gap with \nvgreen{\polar}, a rollout framework for scalable asynchronous RL over arbitrary agent harnesses.
+\polar treats the agent harness as a black box: it proxies LLM API calls, records token-level model interactions, and reconstructs token-faithful trajectories for training. Each rollout node efficiently manages runtime prewarming, agent execution, trajectory reconstruction, and evaluation in parallel, exposing asynchronous service endpoints that can be consumed by independent trainers at scale.
+This decoupled design makes \polar agnostic to agent harnesses, training infrastructure, and RL algorithms while improving compute utilization for long-running agent workloads.
+We validate \polar by training agents on software-engineering tasks with popular coding harnesses.
+Using simple GRPO, \polar improves Qwen3.5-4B by 22.6, 4.8, 0.6 and 6.2 points on SWE-Bench Verified with the Codex, Claude Code, Qwen Code and Pi harnesses, respectively.
+We further demonstrate \polar for offline data generation over custom harnesses and ablate trajectory reconstruction strategies. \nvgreen{\polar} rewrites its preceding work, 
+\nvgreen{\prorlagent}\footnotemark{}
+and has been registered as one of \nvgreen{NeMo Gym} environments.
+\end{abstract}
+
+\begin{document}
+
+\maketitle
+\abscontent
+\footnotetext{Code available at \url{https://github.com/NVIDIA-NeMo/ProRL-Agent-Server}\vspace{-5mm}}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.82\textwidth]{assets/polar_arch.png}
+\caption{\textbf{\polar architecture overview.} \polar runs an existing agent harness inside an isolated runtime and places a model API proxy between the harness and the inference server. The proxy forwards model calls, records token-level request and response data, and reconstructs RL trajectories, while rollout gateways asynchronously handle runtime prewarming, harness execution, evaluation, and trainer callbacks. This decoupled design allows \polar to treat agents as a black-box environment, seamlessly scaling across different training frameworks.}
+\label{fig:polar_architecture_overview}
+\label{fig:polar_architecture}
+\end{figure}
+
+\input{introduction}
+\input{relatedwork}
+\input{method}
+\input{experiment}
+
+\section{Conclusion}
+\polar treats agent test-time environments as a first-class part of the RL system rather than an implementation detail to be ported into the trainer. Its central design choice is to move the integration boundary to the model endpoint: the harness runs normally, the proxy observes token-level model traffic, and the rollout service turns completed executions into trainable trajectories and rewards. This separation lets rollout scale independently from training and inference, while preserving the behavior of non-standard harnesses whose value often lies in their engineering details. We believe \polar opens a new paradigm for scaling agentic RL infrastructure in the modern era, and we are actively developing and maintaining the framework as the ecosystem evolves.
+
+\newpage
+\bibliographystyle{plainnat}
+\bibliography{reference}
+
+\clearpage
+\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% APPENDIX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\appendix
+\onecolumn
+\include{appendix}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}

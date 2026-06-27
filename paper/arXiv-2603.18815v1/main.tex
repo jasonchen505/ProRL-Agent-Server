@@ -1,0 +1,149 @@
+\pdfoutput=1
+\documentclass[10pt,logo,copyright]{nvidiatechreport}
+\linespread{1.15}
+
+\input{packages}
+% Optional math commands from https://github.com/goodfeli/dlbook_notation.
+\input{common.tex}
+\newcommand{\FIGREF}[1]{Fig.~\ref{#1}} % Fig. or Figure
+\definecolor{darkred}{rgb}{0.7, 0.0, 0.0}
+\newcommand{\checkthis}[1]{\textcolor{darkred}{#1}}
+
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}} % Tick mark
+\newcommand{\xmark}{\ding{55}} % Cross mark
+\usepackage{wrapfig}
+\renewcommand{\today}{}
+\usepackage[nameinlink]{cleveref}
+\crefname{equation}{Eq.}{Eqs.}
+\crefname{figure}{Fig.}{Figs.}
+\crefname{section}{Sec.}{Sec.}
+\crefname{appendix}{App.}{App.}
+\crefname{table}{Tab.}{Tabs.}
+\crefname{algorithm}{Algo}{Algo}
+\crefname{thm}{Thm}{Thm}
+\Crefname{thm}{Thm}{Thm}
+\crefname{prop}{Prop}{Prop}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{makecell}
+\usepackage{xurl}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{hyperref} 
+\usepackage{tikz}
+\usetikzlibrary{trees} % Explicitly load the trees library
+\usepackage[edges]{forest}
+\usepackage[breakable]{tcolorbox}
+\definecolor{nvidiaGreen}{HTML}{9dca63}
+\newcommand{\crefnames}[3]{%
+  \@for\next:=#1\do{%
+    \expandafter\crefname\expandafter{\next}{#2}{#3}%
+  }%
+}
+\usepackage{listings}
+\lstdefinestyle{pythonstyle}{language=Python, basicstyle=\ttfamily\small, keywordstyle=\color{blue}, commentstyle=\color{gray}, stringstyle=\color{red}, showstringspaces=false, breaklines=true}
+\newcommand{\sz}[1]{\textcolor[rgb]{0.12,0.55,1.0}{Shaokun-#1}}
+\newcommand\ximing[1]{{\color{purple}[#1]$_{Ximing}$}}
+\definecolor{midnightgreen}{rgb}{0.0, 0.29, 0.33}
+\definecolor{deepgreen}{HTML}{0aa344}
+\definecolor{deeppurple}{HTML}{7030a0}
+\definecolor{deepblue}{HTML}{171d91}
+\definecolor{brown}{HTML}{843c0c}
+\definecolor{shadered}{HTML}{ffe5e5}
+\definecolor{shadegreen}{HTML}{e5f7ed}
+\definecolor{msftBlack}{RGB}{0,0,0}
+\definecolor{lightred}{RGB}{255,163,163}
+\definecolor{deepred}{RGB}{146,0,0}
+\captionsetup[subfigure]{justification=centering}
+\newcommand{\finding}[2]{
+    % args:
+    %   1: finding number
+    %   2: finding text
+    \vspace{-0.1cm}
+    \begin{tcolorbox}[
+        colback=nvidiaGreen,     % Soft ivory background
+        colframe=gray!5!white,     % Deep navy frame color
+        arc=10pt,                    % Less rounded corners for a modern look
+        boxsep=7pt,                 % Inner margin between text and frame
+        left=10pt,                  % Left margin within the box
+        right=10pt,                 % Right margin within the box
+        top=2pt,                    % Top margin within the box
+        bottom=2pt,                 % Bottom margin within the box
+        boxrule=1.0pt,              % Frame thickness
+        % enhanced jigsaw removed
+    ]
+        \paragraph{\textbf{\textit{Finding #1:}}} #2
+    \end{tcolorbox}
+}
+\newtcolorbox{boxL}{
+    fontupper = \color{black},
+    rounded corners,
+    arc = 6pt,
+    colframe = black!50, 
+    boxrule = 0pt, 
+    bottomrule = 4.5pt ,
+    breakable,
+}
+\newcommand{\prorlagent}{\textsc{ProRL Agent }}
+% \title{ProRL Agent: Decoupled Rollout Infrastructure for RL Training of Multi-Turn LLM Agents}
+\title{ProRL Agent: Rollout-as-a-Service for RL Training of Multi-Turn LLM Agents}
+\author{Hao Zhang$^*$, Mingjie Liu$^*$, Shaokun Zhang$^*$, Songyang Han, Jian Hu, Zhenghui Jin, Yuchi Zhang, Shizhe Diao, Ximing Lu, Binfeng Xu, Zhiding Yu, Jan Kautz, Yi Dong
+}
+
+\begin{abstract}
+% \ximing{we might want to start with the importance then the difficulty with training multi-turn LLM agents.}
+Multi-turn LLM agents are increasingly important for solving complex, interactive tasks, and reinforcement learning (RL) is a key ingredient for improving their long-horizon behavior.
+However, RL training requires generating large numbers of sandboxed rollout trajectories, and existing infrastructures often couple rollout orchestration with the training loop, making systems hard to migrate and maintain.
+Under the \textit{rollout-as-a-service} philosophy, we present \prorlagent, a scalable infrastructure that serves the full agentic rollout lifecycle through an API service.
+\prorlagent also provides standardized and extensible sandbox environments that support diverse agentic tasks in rootless HPC settings.
+We validate \prorlagent through RL training on software engineering, math, STEM, and coding tasks. \prorlagent is open-sourced at \href{https://github.com/NVIDIA-NeMo/ProRL-Agent-Server}{ProRL Agent} and integrated as part of NVIDIA NeMo Gym.
+\end{abstract}
+
+% \begin{abstract}
+% We present \textsc{ProRL Agent}, a scalable rollout infrastructure for RL training of multi-turn LLM agents.
+% Under the \textit{rollout-as-a-service} philosophy, \textsc{ProRL Agent} exposes the full agentic rollout lifecycle as a unified HTTP service, allowing trainers to submit task instances and retrieve completed trajectories without handling any rollout-side logic.
+% It also provides standardized and extensible sandbox environments for supporting diverse agentic tasks in rootless HPC settings.
+% We validate \textsc{ProRL Agent} through RL training on software engineering, math, STEM, and coding tasks. \textsc{ProRL Agent} is open-sourced at \href{https://github.com/NVIDIA-NeMo/ProRL-Agent-Server}{ProRL Agent} and integrated as part of NVIDIA NeMo Gym.
+% \end{abstract}
+
+\begin{document}
+
+\maketitle
+\abscontent
+
+\input{introduction}
+\input{relatedwork}
+\input{method}
+\input{experiment}
+
+\section{Conclusion}
+
+In this work, we introduce \textsc{ProRL Agent}, a open-source scalable rollout infrastructure for HPC-native multi-turn agent training. 
+By separating the entire rollout lifecycle from policy training, \textsc{ProRL Agent} improves modularity, scalability, and deployability for agent RL. Experiments across software engineering, STEM, math, and code agents demonstrate effective end-to-end RL training, with strong performance gains across multiple model scales. We release \textsc{ProRL Agent} as open source and as part of NVIDIA NeMo Gym, and leave richer environments and improved cluster-scale robustness to future work.
+
+\clearpage
+\newpage
+\bibliographystyle{plainnat}
+\bibliography{reference}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% APPENDIX
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\appendix
+\onecolumn
+\include{appendix}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\end{document}
+
+

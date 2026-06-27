@@ -1,0 +1,37 @@
+{
+  "prompt_ids": [151644, 872, "..."],
+  "response_ids": [9211, 374, 264, "...", 151645, 271, 151644],
+  "loss_mask": [1, 1, 1, "...", 0, 0, 1],
+  "response_logprobs": [
+    {
+      "token": "The",
+      "token_id": 785,
+      "logprob": -0.21
+    },
+    {
+      "token": " patch",
+      "token_id": 10042,
+      "logprob": -0.44
+    },
+    {
+      "token_id": 151645,
+      "logprob": 0.0
+    }
+  ],
+  "prompt_messages": [
+    {"role": "system", "content": "agent harness system prompt"},
+    {"role": "user", "content": "task instruction and current tool state"}
+  ],
+  "response_messages": [
+    {"role": "assistant", "content": "sampled assistant turn"}
+  ],
+  "tools": null,
+  "finish_reason": "stop",
+  "reward": 1.0,
+  "metadata": {
+    "session_id": "session-123",
+    "task_id": "polar-swegym-0001",
+    "builder": "prefix_merging",
+    "harness": "codex"
+  }
+}

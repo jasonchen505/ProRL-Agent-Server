@@ -1,0 +1,164 @@
+\section{Appendix}
+
+\subsection{Framework Comparison}
+\label{app:framework_comparison}
+
+\begin{table}[H]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4.5pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{System} &
+\makecell{\textbf{Async RL}\\\textbf{Support}} &
+\makecell{\textbf{Async}\\\textbf{Rollout Staging}} &
+\makecell{\textbf{Rollout as}\\\textbf{Service}} &
+\makecell{\textbf{Agent Harness}\\\textbf{Agnostic}} \\
+\midrule
+\polar & \cmark & \cmark & \cmark & \cmark \\
+\prorlagent \citep{prorlagent2026} & \cmark & \cmark & \cmark & \xmark \\
+SkyRL-Agent \citep{skyrlagent2025} & \cmark & \cmark & \xmark & \pmark \\
+PRIME-RL \citep{primerl2026} & \cmark & \xmark & \xmark & \xmark \\
+Agent Lightning \citep{agentlightning2025} & \pmark & \xmark & \pmark & \pmark \\
+rLLM \citep{rllm2025} & \pmark & \xmark & \xmark & \xmark \\
+OpenClaw-RL \citep{openclawrl2026} & \cmark & \xmark & \xmark & \pmark \\
+\bottomrule
+\end{tabular}
+\caption{\textbf{Comparing rollout-system design choices.} We find that modern rollout infrastructures should meet following criteria: async RL support means training can consume rollouts while generation continues under explicit policy-version or staleness handling; async rollout staging means rollout execution is decomposed into independently scheduled runtime-preparation, execution, post-run reconstruction/evaluation, and cleanup stages; rollout as service means a durable task API that is separable from a specific trainer loop; and native-harness agnosticism means a CLI, SDK, or application harness can be trained without being reimplemented as the framework's environment. \cmark{} denotes first-class support, \pmark{} denotes partial or planned support, and \xmark{} denotes that we did not find the property as a primary design contract in the referenced code or documentation.}
+\label{tab:framework_comparison}
+\end{table}
+
+The partial marks in \cref{tab:framework_comparison} avoid treating adjacent mechanisms as absent. SkyRL exposes custom generators and Harbor integration, but native harnesses are not the default unit of rollout. Agent Lightning provides a rollout store, queue, runner control plane, and broad framework instrumentation, while its main boundary is trace/workflow observability rather than staged execution of opaque harness processes. rLLM includes fully asynchronous training and a model gateway that captures token IDs and log probabilities, but its rollout service abstraction is narrower than a distributed runtime lifecycle service. OpenClaw-RL decouples serving, rollout collection, judging, and training for real-world agent settings; its support is organized around OpenClaw and specific terminal, GUI, SWE, and tool-call recipes rather than arbitrary native harness submission.
+
+\subsection{SWE-Gym GRPO Hyperparameters}
+\label{app:swegym_grpo_hparams}
+
+\begin{table}[H]
+\centering
+\small
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{ll}
+\toprule
+\textbf{Hyperparameter} & \textbf{Value} \\
+\midrule
+Base checkpoint & \texttt{Qwen/Qwen3.5-4B} \\
+Training data & \texttt{NovaSky-AI/SkyRL-v0-293-data}, train split, 293 tasks \\
+Trainer & Slime asynchronous GRPO \\
+Epochs & 1 \\
+Rollout batch size & 4 \\
+Samples per prompt & 16 \\
+Trace construction & \texttt{prefix\_merging} \\
+Optimizer & Adam \\
+Learning rate & $1\times10^{-6}$ \\
+Weight decay & 0.1 \\
+TIS & Enabled \\
+\bottomrule
+\end{tabular}
+\caption{\textbf{Training hyperparameters for the SWE-Gym GRPO experiments.} The table reports ordinary policy-optimization and rollout parameters from \texttt{examples/swegym\_slime\_grpo}; cluster topology and worker placement are omitted.}
+\label{tab:swegym_grpo_hparams}
+\end{table}
+
+\subsection{Representative Task Payload}
+\label{app:task_payload}
+
+\begin{polarlisting}{Representative Polar Task Payload}
+{
+  "task_id": "polar-swegym-{rollout_id}-{group_index}",
+  "instruction": "Fix the issue in /polar/session/workspace.",
+  "num_samples": 8,
+  "timeout_seconds": 1200,
+  "runtime": {
+    "backend": "docker",
+    "image": "{sample.metadata.runtime_image}",
+    "network": "host",
+    "workdir": "/polar/session/workspace",
+    "prepare": [
+      {
+        "type": "exec",
+        "command": "prepare repository, harness, and dependencies"
+      }
+    ]
+  },
+  "agent": {
+    "harness": "codex",
+    "model_name": "{served_model_name}"
+  },
+  "builder": {
+    "strategy": "prefix_merging"
+  },
+  "evaluator": {
+    "strategy": "swebench_harness",
+    "refresh_runtime": true,
+    "config": {
+      "repo_dir": "/testbed",
+      "patch_command": "cd /polar/session/workspace && git add -A && git diff --cached --binary",
+      "instance": "{sample.metadata.instance}"
+    }
+  },
+  "callback_url": "http://{trainer_host}:{callback_port}/callback/task_result",
+  "metadata": {
+    "group_id": "{rollout_group_id}",
+    "policy_version": "{policy_version}",
+    "rollout_step": "{rollout_step}"
+  }
+}
+\end{polarlisting}
+
+\subsection{Representative Trace}
+\label{app:trace_example}
+
+\begin{polarlisting}{Representative Trainer-Facing Trace}
+{
+  "prompt_ids": [151644, 872, "..."],
+  "response_ids": [9211, 374, 264, "...", 151645, 271, 151644],
+  "loss_mask": [1, 1, 1, "...", 0, 0, 1],
+  "response_logprobs": [
+    {
+      "token": "The",
+      "token_id": 785,
+      "logprob": -0.21
+    },
+    {
+      "token": " patch",
+      "token_id": 10042,
+      "logprob": -0.44
+    },
+    {
+      "token_id": 151645,
+      "logprob": 0.0
+    }
+  ],
+  "prompt_messages": [
+    {"role": "system", "content": "agent harness system prompt"},
+    {"role": "user", "content": "task instruction and current tool state"}
+  ],
+  "response_messages": [
+    {"role": "assistant", "content": "sampled assistant turn"}
+  ],
+  "tools": null,
+  "finish_reason": "stop",
+  "reward": 1.0,
+  "metadata": {
+    "session_id": "session-123",
+    "task_id": "polar-swegym-0001",
+    "builder": "prefix_merging",
+    "harness": "codex"
+  }
+}
+\end{polarlisting}
+
+\subsection{Service API Summary}
+
+The rollout service exposes a small asynchronous API:
+
+\begin{itemize}
+    \item \texttt{POST /rollout/task/submit}: submit a non-blocking task request.
+    \item \texttt{GET /rollout/task/\{task\_id\}}: poll task status, partial results, and final results.
+    \item \texttt{GET /rollout/status}: inspect task states, node states, and pending sessions.
+    \item \texttt{POST /callbacks/session\_result}: receive gateway session callbacks.
+    \item \texttt{POST /nodes/register} and \texttt{POST /nodes/\{node\_id\}/heartbeat}: maintain gateway membership and scheduling metrics.
+\end{itemize}
+
+The gateway exposes a control surface for session creation, status, and deletion, plus a catch-all proxy surface for provider-style model requests. Session deletion is used by the rollout pipeline as best-effort cleanup after a terminal result has been persisted.

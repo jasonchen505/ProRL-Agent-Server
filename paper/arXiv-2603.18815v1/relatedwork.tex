@@ -1,0 +1,42 @@
+\section{Related Work}
+\begin{table*}[h]
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Frameworks} & \textbf{Training-Rollout Decoupled?} & \textbf{Rootless Sandbox?} & \textbf{Scaffold-Independent?} \\
+\midrule
+SkyRL-Agent~\citep{cao2025skyrlagent} & \xmark & \xmark & \checkmark \\
+VeRL-Tool~\citep{jiang2025verltool} & \xmark & \xmark & \checkmark \\
+Agent Lightning~\citep{luo2025agentlightning} & \xmark & \xmark & \xmark \\
+rLLM~\citep{tan2025rllm} & \xmark & \xmark & \checkmark \\
+GEM~\citep{liu2025gem} & \xmark & \xmark & \checkmark \\
+\midrule
+\rowcolor{gray!30} \textbf{\prorlagent (Ours)} & \checkmark & \checkmark & \checkmark \\
+\bottomrule
+\end{tabular}
+\caption{\textbf{Comparison of \prorlagent with existing frameworks for multi-turn agent RL.} \prorlagent decouples rollout from training, supports rootless sandboxing for shared HPC environments, and is independent of any specific training framework.}
+\label{tab:framework_comparison}
+\end{table*}
+
+\textbf{Multi-turn RL for LLM Agents.}
+Reinforcement learning has been highly effective for improving single-turn reasoning such as mathematics, logic, and coding~\citep{shao2024deepseekmath, guo2025deepseek, hu2025openreasonerzero, zhang2026nemotronresearchtooln}. 
+Building on this progress, recent work has extended RL to multi-turn agentic settings, where agents interact with external environments over long horizons~\citep{cao2025skyrl, luo2025deepswe, gao2025beyond, li2025torl, jin2025searchr1,wang2025vagen,ragenv2026collapse}. 
+In these settings, a multi-turn agent is naturally formulated as a POMDP~\citep{kaelbling1998pomdp}, where agent produces actions through tool calls~\citep{yao2022react, wang2024codeact,patil2025the,zhang2024offline} and receives environment observations at each step.
+As tasks become more complex, multi-turn rollouts often span dozens of steps in diverse environments, such as code repositories~\citep{jimenez2024swebench, jain2025r2egym}, web browsers~\citep{zhou2023webarena}, and even computer operating systems~\citep{xie2024osworld}.
+
+As a result, the infrastructure required to generate, manage, and evaluate these rollouts at scale has become a major bottleneck for RL training.
+This bottleneck slows both training and the deployment of RL agents. \prorlagent is designed to address this challenge by decoupling the full lifecycle of multi-turn agent rollout from the training stack, allowing researchers and practitioners to focus on training algorithms and agent design.
+
+\textbf{Agent RL Infrastructures.}
+A growing body of work has begun to address the challenges of scalable RL training for agents, including support for diverse tool integration~\citep{jiang2025verltool, li2025torl}, flexible environment abstractions~\citep{liu2025gem, tan2025rllm}, and efficient rollout scheduling~\citep{cao2025skyrlagent}.
+Yet across these frameworks, rollout orchestration, including environment lifecycle management, tool execution, trajectory collection, and evaluation, remains implemented as an in-process library within the training loop. 
+Under this design, adopting a new training backend often requires re-implementing or porting the entire rollout stack. This tight coupling makes rollout infrastructure a major source of friction in multi-turn agent RL, often demanding more engineering effort than the training algorithm itself.
+
+\textbf{Agentic Sandbox Environments.}
+Multi-turn agent training requires sandboxed environments that provide isolation, reproducibility, and security at scale.
+Existing platforms~\citep{wang2024openhands, jimenez2024swebench, jain2025r2egym, yang2024sweagent} have established primary protocols, but they deeply rely on Docker for agent execution.
+Docker assumes daemon access and root-equivalent privileges, which are often unavailable on shared Slurm-managed HPC clusters. 
+As a result, practitioners often face a trade-off between maintaining separate infrastructure for evaluation and deployment, or incurring the operational complexity of privileged container runtimes on restricted systems.
+\prorlagent addresses this limitation by building its sandbox infrastructure on Singularity, enabling rootless execution and native Slurm integration for large-scale agent training on HPC systems.

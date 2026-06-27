@@ -1,0 +1,214 @@
+\begin{thebibliography}{40}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[nem(2025)]{nemo-rl}
+Nemo rl: A scalable and efficient post-training library.
+\newblock \url{https://github.com/NVIDIA-NeMo/RL}, 2025.
+\newblock GitHub repository.
+
+\bibitem[Cao et~al.(2025{\natexlab{a}})Cao, Hegde, Li, Griggs, Liu, Tang, Pan, Wang, Malik, Neubig, Hakhamaneshi, Liaw, Moritz, Zaharia, Gonzalez, and Stoica]{cao2025skyrl}
+Shiyi Cao, Sumanth Hegde, Dacheng Li, Tyler Griggs, Shu Liu, Eric Tang, Jiayi Pan, Xingyao Wang, Akshay Malik, Graham Neubig, Kourosh Hakhamaneshi, Richard Liaw, Philipp Moritz, Matei Zaharia, Joseph~E. Gonzalez, and Ion Stoica.
+\newblock Skyrl-v0: Train real-world long-horizon agents via reinforcement learning.
+\newblock 2025{\natexlab{a}}.
+
+\bibitem[Cao et~al.(2025{\natexlab{b}})Cao, Li, Zhao, Yuan, Hegde, Chen, Ruan, Griggs, Liu, Tang, Liaw, Moritz, Zaharia, Gonzalez, and Stoica]{cao2025skyrlagent}
+Shiyi Cao, Dacheng Li, Fangzhou Zhao, Shuo Yuan, Sumanth~R Hegde, Connor Chen, Charlie Ruan, Tyler Griggs, Shu Liu, Eric Tang, Richard Liaw, Philipp Moritz, Matei Zaharia, Joseph~E. Gonzalez, and Ion Stoica.
+\newblock Skyrl-agent: Efficient rl training for multi-turn llm agent.
+\newblock \emph{arXiv preprint arXiv:2511.16108}, 2025{\natexlab{b}}.
+
+\bibitem[Gao et~al.(2025)Gao, Fu, Xie, Xu, He, Mei, Zhu, and Wu]{gao2025beyond}
+Jiaxuan Gao, Wei Fu, Minyang Xie, Shusheng Xu, Chuyi He, Zhiyu Mei, Banghua Zhu, and Yi~Wu.
+\newblock Beyond ten turns: Unlocking long-horizon agentic search with large-scale asynchronous rl.
+\newblock \emph{arXiv preprint arXiv:2508.07976}, 2025.
+
+\bibitem[Guo et~al.(2025)Guo, Yang, Zhang, Song, Zhang, Xu, Zhu, Ma, Wang, Bi, et~al.]{guo2025deepseek}
+Daya Guo, Dejian Yang, Haowei Zhang, Junxiao Song, Ruoyu Zhang, Runxin Xu, Qihao Zhu, Shirong Ma, Peiyi Wang, Xiao Bi, et~al.
+\newblock Deepseek-r1: Incentivizing reasoning capability in llms via reinforcement learning.
+\newblock \emph{arXiv preprint arXiv:2501.12948}, 2025.
+
+\bibitem[Hu et~al.(2025)Hu, Zhang, Han, Jiang, Zhang, and Shum]{hu2025openreasonerzero}
+Jingcheng Hu, Yinmin Zhang, Qi~Han, Daxin Jiang, Xiangyu Zhang, and Heung-Yeung Shum.
+\newblock Open-reasoner-zero: An open source approach to scaling up reinforcement learning on the base model.
+\newblock \emph{arXiv preprint arXiv:2503.24290}, 2025.
+
+\bibitem[Jain et~al.(2025)Jain, Singh, Shetty, Zheng, Sen, and Stoica]{jain2025r2egym}
+Naman Jain, Jaskirat Singh, Manish Shetty, Liang Zheng, Koushik Sen, and Ion Stoica.
+\newblock R2e-gym: Procedural environments and hybrid verifiers for scaling open-weights swe agents.
+\newblock \emph{arXiv preprint arXiv:2504.07164}, 2025.
+
+\bibitem[Jiang et~al.(2025)Jiang, Lu, Li, Lyu, Nie, Wang, Su, Chen, Zou, Du, et~al.]{jiang2025verltool}
+Dongfu Jiang, Yi~Lu, Zhuofeng Li, Zhiheng Lyu, Ping Nie, Haozhe Wang, Alex Su, Hui Chen, Kai Zou, Chao Du, et~al.
+\newblock Verl-tool: Towards holistic agentic reinforcement learning with tool use.
+\newblock \emph{arXiv preprint arXiv:2509.01055}, 2025.
+
+\bibitem[Jimenez et~al.(2023)Jimenez, Yang, Wettig, Yao, Pei, Press, and Narasimhan]{jimenez2023swe}
+Carlos~E Jimenez, John Yang, Alexander Wettig, Shunyu Yao, Kexin Pei, Ofir Press, and Karthik Narasimhan.
+\newblock Swe-bench: Can language models resolve real-world github issues?
+\newblock \emph{arXiv preprint arXiv:2310.06770}, 2023.
+
+\bibitem[Jimenez et~al.(2024)Jimenez, Yang, Wettig, Yao, Pei, Press, and Narasimhan]{jimenez2024swebench}
+Carlos~E Jimenez, John Yang, Alexander Wettig, Shunyu Yao, Kexin Pei, Ofir Press, and Karthik~R Narasimhan.
+\newblock Swe-bench: Can language models resolve real-world github issues?
+\newblock In \emph{The Twelfth International Conference on Learning Representations}, 2024.
+
+\bibitem[Jin et~al.(2025)Jin, Zeng, Yue, Yoon, Arik, Wang, Zamani, and Han]{jin2025searchr1}
+Bowen Jin, Hansi Zeng, Zhenrui Yue, Jinsung Yoon, Sercan Arik, Dong Wang, Hamed Zamani, and Jiawei Han.
+\newblock Search-r1: Training llms to reason and leverage search engines with reinforcement learning.
+\newblock \emph{arXiv preprint arXiv:2503.09516}, 2025.
+
+\bibitem[Kaelbling et~al.(1998)Kaelbling, Littman, and Cassandra]{kaelbling1998pomdp}
+Leslie~Pack Kaelbling, Michael~L Littman, and Anthony~R Cassandra.
+\newblock Planning and acting in partially observable stochastic domains.
+\newblock \emph{Artificial Intelligence}, 101\penalty0 (1-2):\penalty0 99--134, 1998.
+
+\bibitem[Kwon(2025)]{kwon2025vllm}
+Woosuk Kwon.
+\newblock \emph{vLLM: An Efficient Inference Engine for Large Language Models}.
+\newblock PhD thesis, UC Berkeley, 2025.
+
+\bibitem[Li et~al.(2025)Li, Zou, and Liu]{li2025torl}
+Xuefeng Li, Haoyang Zou, and Pengfei Liu.
+\newblock Torl: Scaling tool-integrated rl.
+\newblock \emph{arXiv preprint arXiv:2503.23383}, 2025.
+
+\bibitem[Liu et~al.(2025{\natexlab{a}})Liu, Diao, Lu, Hu, Dong, Choi, Kautz, and Dong]{prorl2025}
+Mingjie Liu, Shizhe Diao, Ximing Lu, Jian Hu, Xin Dong, Yejin Choi, Jan Kautz, and Yi~Dong.
+\newblock Prorl: Prolonged reinforcement learning expands reasoning boundaries in large language models.
+\newblock \emph{39th Conference on Neural Information Processing Systems}, 2025{\natexlab{a}}.
+
+\bibitem[Liu et~al.(2025{\natexlab{b}})Liu, Sims, Duan, Chen, Yu, Zhou, Xu, Xiong, Liu, Tan, et~al.]{liu2025gem}
+Zichen Liu, Anya Sims, Keyu Duan, Changyu Chen, Simon Yu, Xiangxin Zhou, Haotian Xu, Shaopan Xiong, Bo~Liu, Chenmien Tan, et~al.
+\newblock Gem: A gym for agentic llms.
+\newblock \emph{arXiv preprint arXiv:2510.01051}, 2025{\natexlab{b}}.
+
+\bibitem[Lu et~al.(2025)Lu, Tan, Xu, Yao, Qu, Chu, Xu, and Qi]{lu2025scp116khighqualityproblemsolutiondataset}
+Dakuan Lu, Xiaoyu Tan, Rui Xu, Tianchu Yao, Chao Qu, Wei Chu, Yinghui Xu, and Yuan Qi.
+\newblock Scp-116k: A high-quality problem-solution dataset and a generalized pipeline for automated extraction in the higher education science domain, 2025.
+\newblock URL \url{https://arxiv.org/abs/2501.15587}.
+
+\bibitem[Luo et~al.(2025{\natexlab{a}})Luo, Jain, Singh, Tan, Patel, Wu, Ariyak, Cai, Venkat, Zhu, Athiwaratkun, Roongta, Zhang, Li, Popa, Sen, and Stoica]{luo2025deepswe}
+Michael Luo, Naman Jain, Jaskirat Singh, Sijun Tan, Ameen Patel, Qingyang Wu, Alpay Ariyak, Colin Cai, Tarun Venkat, Shang Zhu, Ben Athiwaratkun, Manan Roongta, Ce~Zhang, Li~Erran Li, Raluca~Ada Popa, Koushik Sen, and Ion Stoica.
+\newblock Deepswe: Training a state-of-the-art coding agent by scaling rl.
+\newblock 2025{\natexlab{a}}.
+
+\bibitem[Luo et~al.(2025{\natexlab{b}})Luo, Tan, Wong, Shi, Tang, Roongta, Cai, Luo, Zhang, Li, Popa, and Stoica]{deepscaler2025}
+Michael Luo, Sijun Tan, Justin Wong, Xiaoxiang Shi, William Tang, Manan Roongta, Colin Cai, Jeffrey Luo, Tianjun Zhang, Erran Li, Raluca~Ada Popa, and Ion Stoica.
+\newblock Deepscaler: Surpassing o1-preview with a 1.5b model by scaling rl.
+\newblock \url{https://pretty-radio-b75.notion.site/DeepScaleR-Surpassing-O1-Preview-with-a-1-5B-Model-by-Scaling-RL-19681902c1468005bed8ca303013a4e2}, 2025{\natexlab{b}}.
+\newblock Notion Blog.
+
+\bibitem[Luo et~al.(2025{\natexlab{c}})Luo, Zhang, He, Wang, Zhao, Li, Qiu, and Yang]{luo2025agentlightning}
+Xufang Luo, Yuge Zhang, Zhiyuan He, Zilong Wang, Siyun Zhao, Dongsheng Li, Luna~K Qiu, and Yuqing Yang.
+\newblock Agent lightning: Train any ai agents with reinforcement learning.
+\newblock \emph{arXiv preprint arXiv:2508.03680}, 2025{\natexlab{c}}.
+
+\bibitem[NVIDIA(2025)]{nemo-gym}
+NVIDIA.
+\newblock Nemo gym: An open source library for scaling reinforcement learning environments for llm.
+\newblock \url{https://github.com/NVIDIA-NeMo/Gym}, 2025.
+\newblock GitHub repository.
+
+\bibitem[Patil et~al.(2025)Patil, Mao, Yan, Ji, Suresh, Stoica, and Gonzalez]{patil2025the}
+Shishir~G Patil, Huanzhi Mao, Fanjia Yan, Charlie Cheng-Jie Ji, Vishnu Suresh, Ion Stoica, and Joseph~E. Gonzalez.
+\newblock The berkeley function calling leaderboard ({BFCL}): From tool use to agentic evaluation of large language models.
+\newblock In \emph{Forty-second International Conference on Machine Learning}, 2025.
+\newblock URL \url{https://openreview.net/forum?id=2GmDdhBdDk}.
+
+\bibitem[Shao et~al.(2024)Shao, Wang, Zhu, Xu, Song, Bi, Zhang, Zhang, Li, Wu, et~al.]{shao2024deepseekmath}
+Zhihong Shao, Peiyi Wang, Qihao Zhu, Runxin Xu, Junxiao Song, Xiao Bi, Haowei Zhang, Mingchuan Zhang, YK~Li, Yang Wu, et~al.
+\newblock Deepseekmath: Pushing the limits of mathematical reasoning in open language models.
+\newblock \emph{arXiv preprint arXiv:2402.03300}, 2024.
+
+\bibitem[Sheng et~al.(2025)Sheng, Zhang, Ye, Wu, Zhang, Zhang, Peng, Lin, and Wu]{sheng2025verl}
+Guangming Sheng, Chi Zhang, Zilingfeng Ye, Xibin Wu, Wang Zhang, Ru~Zhang, Yanghua Peng, Haibin Lin, and Chuan Wu.
+\newblock Hybridflow: A flexible and efficient rlhf framework.
+\newblock In \emph{Proceedings of the Twentieth European Conference on Computer Systems}, pages 1279--1297, 2025.
+
+\bibitem[Tan et~al.(2025)Tan, Luo, Cai, Venkat, Montgomery, Wu, Balyan, Roongta, Wang, Li, Popa, and Stoica]{tan2025rllm}
+Sijun Tan, Michael Luo, Colin Cai, Tarun Venkat, Kyle Montgomery, Tianhao Wu, Arnav Balyan, Manan Roongta, Chenguang Wang, Li~Erran Li, Raluca~Ada Popa, and Ion Stoica.
+\newblock rllm: A framework for post-training language agents.
+\newblock 2025.
+
+\bibitem[{The Agent Lightning (AGL) Team}(2025)]{team2025notokenization}
+{The Agent Lightning (AGL) Team}.
+\newblock No more retokenization drift: Returning token ids via the openai compatible api matters in agent rl.
+\newblock \url{https://blog.vllm.ai/2025/10/22/agent-lightning.html}, 2025.
+
+\bibitem[Wang et~al.(2025)Wang, Zhang, Wang, Gao, Li, Wang, Chen, Lu, Yang, Wang, Krishna, Wu, Fei-Fei, Choi, and Li]{wang2025vagen}
+Kangrui Wang, Pingyue Zhang, Zihan Wang, Yaning Gao, Linjie Li, Qineng Wang, Hanyang Chen, Yiping Lu, Zhengyuan Yang, Lijuan Wang, Ranjay Krishna, Jiajun Wu, Li~Fei-Fei, Yejin Choi, and Manling Li.
+\newblock {VAGEN}: Reinforcing world model reasoning for multi-turn {VLM} agents.
+\newblock In \emph{The Thirty-ninth Annual Conference on Neural Information Processing Systems}, 2025.
+\newblock URL \url{https://openreview.net/forum?id=xpjWEgf8zi}.
+
+\bibitem[Wang et~al.(2024{\natexlab{a}})Wang, Chen, Yuan, Zhang, Li, Peng, and Ji]{wang2024codeact}
+Xingyao Wang, Yangyi Chen, Lifan Yuan, Yizhe Zhang, Yunzhu Li, Hao Peng, and Heng Ji.
+\newblock Executable code actions elicit better llm agents.
+\newblock 2024{\natexlab{a}}.
+
+\bibitem[Wang et~al.(2024{\natexlab{b}})Wang, Li, Song, Xu, Tang, Zhuge, Pan, Song, Li, Singh, et~al.]{wang2024openhands}
+Xingyao Wang, Boxuan Li, Yufan Song, Frank~F Xu, Xiangru Tang, Mingchen Zhuge, Jiayi Pan, Yueqi Song, Bowen Li, Jaskirat Singh, et~al.
+\newblock Openhands: An open platform for ai software developers as generalist agents.
+\newblock In \emph{The Thirteenth International Conference on Learning Representations}, 2024{\natexlab{b}}.
+
+\bibitem[Wang et~al.(2026)Wang, Gui, Jin, Wang, Liu, Wang, Chen, Li, Yang, Zhang, Lu, Wu, Fei-Fei, Wang, Choi, and Li]{ragenv2026collapse}
+Zihan Wang, Chi Gui, Xing Jin, Qineng Wang, Licheng Liu, Kangrui Wang, Shiqi Chen, Linjie Li, Zhengyuan Yang, Pingyue Zhang, Yiping Lu, Jiajun Wu, Li~Fei-Fei, Lijuan Wang, Yejin Choi, and Manling Li.
+\newblock Ragen-v2: Understanding reasoning collapse in multi-turn agent reinforcement learning.
+\newblock 2026.
+
+\bibitem[Xi et~al.(2026)Xi, Huang, Liao, Huang, Liu, Guo, yajie yang, Zheng, Ye, Zhang, Chen, He, Ding, Li, Chen, Du, Yao, Xu, Chen, Gui, Wu, Zhang, Huang, and Jiang]{xi2026agentgymrl}
+Zhiheng Xi, Jixuan Huang, Chenyang Liao, Baodai Huang, Jiaqi Liu, Honglin Guo, yajie yang, Rui Zheng, Junjie Ye, Jiazheng Zhang, Wenxiang Chen, Wei He, Yiwen Ding, Guanyu Li, Zehui Chen, Zhengyin Du, Xuesong Yao, Yufei Xu, Jiecao Chen, Tao Gui, Zuxuan Wu, Qi~Zhang, Xuanjing Huang, and Yu-Gang Jiang.
+\newblock Agentgym-{RL}: An open-source framework to train {LLM} agents for long-horizon decision making via multi-turn {RL}.
+\newblock In \emph{The Fourteenth International Conference on Learning Representations}, 2026.
+\newblock URL \url{https://openreview.net/forum?id=ZgCCDwcGwn}.
+
+\bibitem[Xie et~al.(2024)Xie, Zhang, Chen, Li, Zhao, Cao, Hua, Cheng, Shin, Lei, et~al.]{xie2024osworld}
+Tianbao Xie, Danyang Zhang, Jixuan Chen, Xiaochuan Li, Siheng Zhao, Ruisheng Cao, Toh~J Hua, Zhoujun Cheng, Dongchan Shin, Fangyu Lei, et~al.
+\newblock Osworld: Benchmarking multimodal agents for open-ended tasks in real computer environments.
+\newblock \emph{Advances in Neural Information Processing Systems}, 37:\penalty0 52040--52094, 2024.
+
+\bibitem[Yang et~al.(2024)Yang, Jimenez, Wettig, Lieret, Yao, Narasimhan, and Press]{yang2024sweagent}
+John Yang, Carlos~E Jimenez, Alexander Wettig, Kilian Lieret, Shunyu Yao, Karthik Narasimhan, and Ofir Press.
+\newblock Swe-agent: Agent-computer interfaces enable automated software engineering.
+\newblock \emph{Advances in Neural Information Processing Systems}, 37:\penalty0 50528--50652, 2024.
+
+\bibitem[Yao et~al.(2022)Yao, Zhao, Yu, Du, Shafran, Narasimhan, and Cao]{yao2022react}
+Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik~R Narasimhan, and Yuan Cao.
+\newblock React: Synergizing reasoning and acting in language models.
+\newblock In \emph{The Eleventh International Conference on Learning Representations}, 2022.
+
+\bibitem[Yu et~al.(2025)Yu, Zhang, Zhu, Yuan, Zuo, Yue, Dai, Fan, Liu, Liu, Liu, Lin, Lin, Ma, Sheng, Tong, Zhang, Zhang, Zhang, Zhu, Zhu, Chen, Chen, Wang, Yu, Song, Wei, Zhou, Liu, Ma, Zhang, Yan, Qiao, Wu, and Wang]{yu2025dapoopensourcellmreinforcement}
+Qiying Yu, Zheng Zhang, Ruofei Zhu, Yufeng Yuan, Xiaochen Zuo, Yu~Yue, Weinan Dai, Tiantian Fan, Gaohong Liu, Lingjun Liu, Xin Liu, Haibin Lin, Zhiqi Lin, Bole Ma, Guangming Sheng, Yuxuan Tong, Chi Zhang, Mofan Zhang, Wang Zhang, Hang Zhu, Jinhua Zhu, Jiaze Chen, Jiangjie Chen, Chengyi Wang, Hongli Yu, Yuxuan Song, Xiangpeng Wei, Hao Zhou, Jingjing Liu, Wei-Ying Ma, Ya-Qin Zhang, Lin Yan, Mu~Qiao, Yonghui Wu, and Mingxuan Wang.
+\newblock Dapo: An open-source llm reinforcement learning system at scale, 2025.
+\newblock URL \url{https://arxiv.org/abs/2503.14476}.
+
+\bibitem[Yuan et~al.(2024)Yuan, Li, Chen, Cui, Ding, Zhang, Zhou, Liu, and Peng]{yuan2024implicitprm}
+Lifan Yuan, Wendi Li, Huayu Chen, Ganqu Cui, Ning Ding, Kaiyan Zhang, Bowen Zhou, Zhiyuan Liu, and Hao Peng.
+\newblock Free process rewards without process labels.
+\newblock \emph{arXiv preprint arXiv:2412.01981}, 2024.
+
+\bibitem[Zhang et~al.(2024)Zhang, Zhang, Liu, Song, Wang, Krishna, and Wu]{zhang2024offline}
+Shaokun Zhang, Jieyu Zhang, Jiale Liu, Linxin Song, Chi Wang, Ranjay Krishna, and Qingyun Wu.
+\newblock Offline training of language model agents with functions as learnable weights.
+\newblock In \emph{Forty-first International Conference on Machine Learning}, 2024.
+
+\bibitem[Zhang et~al.(2026)Zhang, Dong, Zhang, Kautz, Catanzaro, Tao, Wu, Yu, and Liu]{zhang2026nemotronresearchtooln}
+Shaokun Zhang, Yi~Dong, Jieyu Zhang, Jan Kautz, Bryan Catanzaro, Andrew Tao, Qingyun Wu, Zhiding Yu, and Guilin Liu.
+\newblock Nemotron-research-tool-n1: Exploring tool-using language models with reinforced reasoning.
+\newblock In \emph{The Fourteenth International Conference on Learning Representations}, 2026.
+\newblock URL \url{https://openreview.net/forum?id=yiE16lWzDj}.
+
+\bibitem[Zheng et~al.(2024)Zheng, Yin, Xie, Sun, Huang, Yu, Cao, Kozyrakis, Stoica, Gonzalez, et~al.]{zheng2024sglang}
+Lianmin Zheng, Liangsheng Yin, Zhiqiang Xie, Chuyue Sun, Jeff Huang, Cody~H Yu, Shiyi Cao, Christos Kozyrakis, Ion Stoica, Joseph~E Gonzalez, et~al.
+\newblock Sglang: Efficient execution of structured language model programs.
+\newblock \emph{Advances in neural information processing systems}, 37:\penalty0 62557--62583, 2024.
+
+\bibitem[Zhou et~al.(2023)Zhou, Xu, Zhu, Zhou, Lo, Sridhar, Cheng, Ou, Bisk, Fried, et~al.]{zhou2023webarena}
+Shuyan Zhou, Frank~F Xu, Hao Zhu, Xuhui Zhou, Robert Lo, Abishek Sridhar, Xianyi Cheng, Tianyue Ou, Yonatan Bisk, Daniel Fried, et~al.
+\newblock Webarena: A realistic web environment for building autonomous agents.
+\newblock \emph{arXiv preprint arXiv:2307.13854}, 2023.
+
+\end{thebibliography}
